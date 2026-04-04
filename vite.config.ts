@@ -9,7 +9,6 @@ const env = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
 const API_URL = env.VITE_API_URL;
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), svgr(), EnvironmentalPlugin("all")],
   server: {
