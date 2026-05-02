@@ -9,12 +9,12 @@ const Login = () => {
   const [formData, setFormData] = useState({ phoneNumber: "", password: "" });
   const { mutateAsync: handleLogin, isPending, isError, error } = useLoginUser();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await handleLogin(formData);
     setFormData({ phoneNumber: "", password: "" });
