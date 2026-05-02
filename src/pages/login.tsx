@@ -7,7 +7,7 @@ import { useLoginUser } from "@/hooks/use-auth";
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ phoneNumber: "", password: "" });
-  const { mutateAsync: handleLogin, isPending, isError, error } = useLoginUser();
+  const { mutateAsync: handleLogin, isPending } = useLoginUser();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -1,4 +1,4 @@
-import { useContext, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import TuliaLogo from "../assets/logo/tuliahub.svg?react";
 import HeaderCTA from "./header-cta";
 import MenuBar from "./menu-bar";

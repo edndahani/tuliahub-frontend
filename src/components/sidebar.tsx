@@ -6,7 +6,7 @@ type sideBarProps = {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-const Sidebar = ({ isOpen, setIsOpen }: sideBarProps) => {
+const Sidebar = ({ isOpen }: sideBarProps) => {
   return (
     <aside className={`${isOpen ? "translate-x-full" : "translate-x-0"} fixed`}>
       <p>hello</p>

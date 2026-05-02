@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header";
 // import MainContents from "./components/main-contents";
@@ -11,7 +11,7 @@ import Spinner from "./components/spinner";
 
 function App() {
   const [isSideOpen, setIsSideOpen] = useState(false);
-  const { authState, setAuthState } = useAuthContext();
+  const { setAuthState } = useAuthContext();
   const { data, isPending, isError } = useGetUser()
 
   const isLogin = !!data && !isError
