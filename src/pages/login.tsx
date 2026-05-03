@@ -47,7 +47,7 @@ const Login = () => {
           <span className="text-sm font-semibold">Password</span>
           <input
             className="border w-80 px-4 py-2 rounded-md"
-            type="text"
+            type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
