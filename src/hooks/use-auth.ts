@@ -1,6 +1,8 @@
 import { getUser, loginUser, logOut } from "@/services/auth";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAuthContext } from "./use-auth-context";
+import axios from "axios";
+import { toast } from "sonner";
 // import { error } from "console";
 
 export const useGetUser = () => {
@@ -22,11 +24,12 @@ export const useLogoutUser = () => {
       queryClient.setQueryData(["user"], null);
       setAuthState({ user: null });
       queryClient.clear();
+      toast.success("Logout successfully!", {position: "top-center"})
     },
 
     onError: (error) => {
-      console.error("Logout error:", error.message || "Logout failed")
-    }
+      console.error("Logout error:", error.message || "Logout failed");
+    },
   });
 };
 
@@ -41,10 +44,27 @@ export const useLoginUser = () => {
       queryClient.setQueryData(["user"], data);
       setAuthState({ user: data });
       queryClient.invalidateQueries({ queryKey: ["user"] });
+      toast.success("Welcome back!", {position: "top-center"})
     },
 
     onError: (error) => {
-      console.error("Login Error:", error.message || "Login failed")
-    }
+      if (axios.isAxiosError(error)) {
+        const status = error.response?.status;
+
+        if (status === 400) {
+          toast.error("Invalid phone number", {position: "top-center"})
+        }
+        else if (status === 401) {
+          toast.error("The number or password is incorrect.", {position: "top-center"})
+        }
+        else if (status === 404) {
+          toast.error("The user doesn't exist.", {position: "top-center"})
+        } else {
+          toast.error("Login failed", {position: "top-center"})
+        }
+      } else {
+        toast.error(error.message);
+      }
+    },
   });
 };
