@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Field, FieldDescription } from "./ui/field";
 import { Button } from "./ui/button";
+import { Spinner } from "./ui/spinner";
 
 type FooterProps = {
   linkForm: string;
@@ -9,6 +10,7 @@ type FooterProps = {
   linkLabel: string;
   to: string;
   isLoading: boolean;
+  loadingLabel?: string;
 };
 
 const FormFooter = ({
@@ -17,19 +19,26 @@ const FormFooter = ({
   description,
   linkLabel,
   to,
-  isLoading
+  loadingLabel,
+  isLoading,
 }: FooterProps) => {
   return (
     <Field>
-      <Button type="submit" form={linkForm}>
-        {isLoading ? `${buttonLabel}ing...` : buttonLabel}
+      <Button type="submit" form={linkForm} className="flex items-center justify-center">
+        {isLoading ? (
+          <>
+            <Spinner />
+            <span>{loadingLabel}</span>
+          </>
+        ) : (
+          buttonLabel
+        )}
       </Button>
       <FieldDescription className="flex justify-center gap-2">
         <span className="text-[15px]">{description}</span>
-        <Link
-          to={to}
-          className="text-[15px] text-primary no-underline"
-        >{linkLabel}</Link>
+        <Link to={to} className="text-[15px] text-primary no-underline">
+          {linkLabel}
+        </Link>
       </FieldDescription>
     </Field>
   );

@@ -43,13 +43,14 @@ const Register = () => {
     console.log(payload);
     handleRegister(payload, {
       onSuccess: () => {
+        navigate("/")
         form.reset()
       }
     })
   };
 
   return (
-    <div className="max-w-lg min-h-[98vh] mt-1.5 mx-auto flex justify-center">
+    <div className="min-h-screen mx-auto flex items-center justify-center p-2">
       <Card className="w-full max-w-md">
         <CardHeader className="flex flex-col items-center">
           <div
@@ -110,7 +111,7 @@ const Register = () => {
                 control={form.control}
                 label="Password"
                 placeholder="••••••••"
-                description="At least 8 characters, including one uppercase letter and one special character."
+                description="Password must be at least 6 characters, with uppercase, lowercase, number, and special character."
               />
             </FieldGroup>
           </form>
@@ -124,6 +125,7 @@ const Register = () => {
             to="/login"
             linkLabel="Login"
             isLoading={isPending}
+            loadingLabel="Registering..."
           />
         </CardFooter>
       </Card>
