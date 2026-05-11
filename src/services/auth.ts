@@ -1,3 +1,4 @@
+import type { Payload } from "@/types";
 import axiosInstance from "./axios-instance";
 
 export const getUser = async () => {
@@ -11,14 +12,8 @@ export const loginUser = async (credentials: {phoneNumber: string; password: str
   return response.data;
 };
 
-export const registerUser = async () => {
-  const response = await axiosInstance.post("/auth/register", {
-    name: "Regina Charles",
-    phoneNumber: "255717666777",
-    password: "@Passcode333",
-    gender: "FEMALE",
-    email: "rfedrick1@exp.com",
-  });
+export const registerUser = async (payload: Payload) => {
+  const response = await axiosInstance.post("/auth/register", payload);
   return response.data;
 };
 

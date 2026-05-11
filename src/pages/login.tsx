@@ -32,7 +32,7 @@ const Login = () => {
       </div>
       <p className="text-2xl font-semibold mb-5">Sign in</p>
       <form onSubmit={handleSubmit} className="flex flex-col mb-5">
-        <label className="flex flex-col gap- mb-5">
+        <label className="flex flex-col gap-2 mb-5">
           <span className="text-sm font-semibold">Phone number</span>
           <input
             className="border w-80 px-4 py-2 rounded-md"
