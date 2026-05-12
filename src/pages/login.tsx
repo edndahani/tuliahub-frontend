@@ -54,7 +54,7 @@ const Login = () => {
                 name="phoneNumber"
                 control={form.control}
                 label="Phone number"
-                placeholder="255712454545"
+                placeholder="255123456789"
               />
 
               <ControllerInput
