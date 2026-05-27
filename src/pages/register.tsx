@@ -50,8 +50,8 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen mx-auto flex items-center justify-center p-2">
-      <Card className="w-full max-w-md">
+    <div className="w-full max-w-md">
+      <Card className="w-full">
         <CardHeader className="flex flex-col items-center">
           <div
             className="flex items-center gap-1 cursor-pointer mb-10"

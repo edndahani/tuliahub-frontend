@@ -50,17 +50,22 @@ export const useLoginUser = () => {
     onError: (error) => {
       if (axios.isAxiosError(error)) {
         const status = error.response?.status;
+        const message = error.message
 
         if (status === 400) {
           toast.error("Invalid phone number", { position: "top-center" });
+          console.log(`HTTP${status}: ${message}`);
         } else if (status === 401) {
           toast.error("The number or password is incorrect.", {
             position: "top-center",
           });
+          console.log(`HTTP${status}: ${message}`);
         } else if (status === 404) {
           toast.error("The user doesn't exist.", { position: "top-center" });
+          console.log(`HTTP${status}: ${message}`);
         } else {
           toast.error("Login failed", { position: "top-center" });
+          console.log(`HTTP${status}: ${message}`);
         }
       } else {
         toast.error(error.message);
@@ -100,7 +105,7 @@ export const useRegister = () => {
           });
         }
       } else {
-        toast.error(error.message)
+        toast.error(error.message);
       }
     },
   });
